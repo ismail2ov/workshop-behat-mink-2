@@ -2,13 +2,13 @@ default:
   suites:
     web_features:
       paths: [ %paths.base%/features/web ]
-      context: [ WebContext ]
+      contexts: [ WebContext ]
     login_features:
       paths: [ %paths.base%/features/login ]
-      context: [ LoginContext ]
+      contexts: [ LoginContext ]
     basket_features:
       paths: [ %paths.base%/features/basket ]
-      context: [ BasketContext ]
+      contexts: [ BasketContext ]
   extensions:
     Behat\MinkExtension:
       base_url:  'http://develex.es/shop/'
