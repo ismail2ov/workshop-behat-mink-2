@@ -44,7 +44,7 @@ class LoginContext extends MinkContext implements Context, SnippetAcceptingConte
     */
     public function iAmLoggedInWithUserAndPassword($email, $password)
     {
-        $this->getSession()->visit($this->locatePath('/mi-cuenta'));
+        $this->getSession()->visit($this->locatePath('/es/my-account'));
         $page = $this->getSession()->getPage();
         $page->fillField('email', $email);
         $page->fillField('passwd', $password);
@@ -57,5 +57,13 @@ class LoginContext extends MinkContext implements Context, SnippetAcceptingConte
     public function iShouldBeOnTheAccountPage($page)
     {
         $this->assertPageAddress($page);
+    }
+
+    /**
+     * @Given browser window maximized
+     */
+    public function browserWindowMaximized()
+    {
+        $this->getSession()->maximizeWindow();
     }
 }

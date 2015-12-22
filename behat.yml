@@ -9,9 +9,19 @@ default:
     basket_features:
       paths: [ %paths.base%/features/basket ]
       contexts: [ BasketContext ]
+    login_with_js:
+          paths: [ %paths.base%/features/login ]
+          contexts: [ LoginContext ]
+          filters:
+            tags: @javascript
+    login_amaris:
+              paths: [ %paths.base%/features/login ]
+              contexts: [ LoginContext ]
+              filters:
+                tags: @amaris
   extensions:
     Behat\MinkExtension:
-      base_url:  'http://develex.es/shop/'
+      base_url:  'http://fo.demo.prestashop.com/'
       default_session: zombie
       javascript_session: selenium2
       goutte: ~

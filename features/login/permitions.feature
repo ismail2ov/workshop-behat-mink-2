@@ -3,16 +3,21 @@ Feature: User Login
   As a authenticated user
   I want to be able to make login and logout
 
+  Background:
+    Given browser window maximized
+
+  @javascript
   Scenario: Not logged in users should not be able to access the account page.
     Given I go to the homepage
     And I am not logged in
     When I go to account page "/mi-cuenta"
     Then I should be on "/inicio-sesion"
 
+  @javascript @amaris
   Scenario: Logged in user should be able to access the account page.
-    Given I am logged in with user "test1@develex.es" and password "112233"
-    When I go to account page "/mi-cuenta"
-    Then I should be on the account page "/mi-cuenta"
+    Given I am logged in with user "pub@prestashop.com" and password "123456789"
+    When I go to account page "/es/my-account"
+    Then I should be on the account page "/es/my-account"
 
   @javascript
   Scenario: Logged in user should not be able to access login page.
