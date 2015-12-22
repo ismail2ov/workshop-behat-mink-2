@@ -1,6 +1,5 @@
 Feature: Contact form
 
-  @javascript
   Scenario: Submits feedback when required fields are filled out
     Given I am on homepage
     When I follow "Contacte con nosotros"
