@@ -1,0 +1,20 @@
+default:
+  suites:
+    web_features:
+      paths: [ %paths.base%/features/web ]
+      context: [ WebContext ]
+    login_features:
+      paths: [ %paths.base%/features/login ]
+      context: [ LoginContext ]
+    basket_features:
+      paths: [ %paths.base%/features/basket ]
+      context: [ BasketContext ]
+  extensions:
+    Behat\MinkExtension:
+      base_url:  'http://develex.es/shop/'
+      sessions:
+        default:
+          goutte: ~
+        javascript_session:
+          selenium2:
+            wd_host: http://127.0.0.1:4444/wd/hub
