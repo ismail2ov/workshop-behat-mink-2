@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
@@ -20,5 +21,41 @@ class LoginContext extends MinkContext implements Context, SnippetAcceptingConte
      */
     public function __construct()
     {
+    }
+
+    /**
+     * @Given I am not logged in
+     */
+    public function iAmNotLoggedIn()
+    {
+        $this->assertSession()->pageTextContains("Iniciar sesión");
+    }
+
+    /**
+     * @When I go to account page :page
+     */
+    public function iGoToAccountPage($page)
+    {
+        $this->visit($page);
+    }
+
+    /**
+    * @Given I am logged in with user :email and password :password
+    */
+    public function iAmLoggedInWithUserAndPassword($email, $password)
+    {
+        $this->getSession()->visit($this->locatePath('/mi-cuenta'));
+        $page = $this->getSession()->getPage();
+        $page->fillField('email', $email);
+        $page->fillField('passwd', $password);
+        $page->pressButton('SubmitLogin');
+    }
+
+    /**
+     * @Then I should be on the account page :page
+     */
+    public function iShouldBeOnTheAccountPage($page)
+    {
+        $this->assertPageAddress($page);
     }
 }
